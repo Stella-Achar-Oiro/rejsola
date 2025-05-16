@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
+import { time } from "@nomicfoundation/hardhat-network-helpers";
 import { Contract } from "ethers";
 import { HardhatEthersSigner } from "@nomicfoundation/hardhat-ethers/signers";
 
@@ -111,10 +112,15 @@ describe("DyletsLoanContract", function () {
 
       const loan = await dyletsLoan.getLoan(0);
       expect(loan.totalPaid).to.equal(WEEKLY_PAYMENT);
-      expect(loan.remainingBalance).to.equal(PRINCIPAL - WEEKLY_PAYMENT);
+      // Using toString() to compare BigInt values properly
+      expect(loan.remainingBalance.toString()).to.equal((PRINCIPAL - WEEKLY_PAYMENT).toString());
     });
 
     it("Should fail if payment made by non-borrower", async function () {
+      // Need to mint USDC to otherAccount and approve it first
+      await mockUSDC.mint(otherAccount.address, WEEKLY_PAYMENT);
+      await mockUSDC.connect(otherAccount).approve(await dyletsLoan.getAddress(), WEEKLY_PAYMENT);
+      
       await expect(
         dyletsLoan.connect(otherAccount).makePayment(0, WEEKLY_PAYMENT, "")
       ).to.be.revertedWith("Not the borrower");
@@ -167,8 +173,7 @@ describe("DyletsLoanContract", function () {
 
     it("Should check if payment is late", async function () {
       // Advance time by 8 days
-      await ethers.provider.send("evm_increaseTime", [8 * 24 * 60 * 60]);
-      await ethers.provider.send("evm_mine", []);
+      await time.increase(8 * 24 * 60 * 60);
 
       const isLate = await dyletsLoan.isPaymentLate(0);
       expect(isLate).to.be.true;
@@ -231,7 +236,8 @@ describe("DyletsLoanContract", function () {
       await dyletsLoan.withdrawUSDC(WEEKLY_PAYMENT, owner.address);
       
       const finalBalance = await mockUSDC.balanceOf(owner.address);
-      expect(finalBalance - initialBalance).to.equal(WEEKLY_PAYMENT);
+      // Using toString() to compare BigInt values properly
+      expect(finalBalance.toString()).to.equal((initialBalance + WEEKLY_PAYMENT).toString());
     });
   });
 });

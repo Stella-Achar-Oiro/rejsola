@@ -11,19 +11,19 @@ const ProfilePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">Name</label>
-                <p className="mt-1 text-gray-900">John Doe</p>
+                <p className="mt-1 text-gray-900">Akinyi Otieno</p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Email</label>
-                <p className="mt-1 text-gray-900">john.doe@example.com</p>
+                <p className="mt-1 text-gray-900">akinyi@example.com</p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Phone</label>
-                <p className="mt-1 text-gray-900">+1 (555) 123-4567</p>
+                <p className="mt-1 text-gray-900">+254 712-123-456</p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Location</label>
-                <p className="mt-1 text-gray-900">New York, USA</p>
+                <p className="mt-1 text-gray-900">Kisumu, Kenya</p>
               </div>
             </div>
           </div>
@@ -33,11 +33,11 @@ const ProfilePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700">Business Name</label>
-                <p className="mt-1 text-gray-900">Cool Beverages Ltd</p>
+                <p className="mt-1 text-gray-900">Wahedho Ltd</p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Business Type</label>
-                <p className="mt-1 text-gray-900">Retail - Beverages</p>
+                <p className="mt-1 text-gray-900">Retail - Fresh Fish</p>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Years in Operation</label>
@@ -45,7 +45,7 @@ const ProfilePage = () => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700">Number of Employees</label>
-                <p className="mt-1 text-gray-900">12</p>
+                <p className="mt-1 text-gray-900">6</p>
               </div>
             </div>
           </div>

@@ -62,7 +62,7 @@ const LandingPage: React.FC = () => {
               <div className="mt-12 lg:mt-0 relative animate-fade-in">
                 <div className="aspect-w-5 aspect-h-3 rounded-lg shadow-lg overflow-hidden">
                   <img
-                    src="https://images.pexels.com/photos/388415/pexels-photo-388415.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    src="https://i.postimg.cc/GhqYwWH9/Image-fx.png"
                     alt="Fish market in Kisumu, Kenya"
                     className="w-full h-full object-cover"
                   />
@@ -125,7 +125,7 @@ const LandingPage: React.FC = () => {
               <div className="order-2 lg:order-1 mt-12 lg:mt-0 animate-fade-in">
                 <div className="aspect-w-4 aspect-h-3 rounded-lg shadow-lg overflow-hidden">
                   <img
-                    src="https://images.pexels.com/photos/3807319/pexels-photo-3807319.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                    src="https://i.postimg.cc/L6btZdRw/Image-fx-1.png"
                     alt="RejSola solar cooler"
                     className="w-full h-full object-cover"
                   />

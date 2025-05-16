@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
                   <div className="flex-shrink-0">
                     <img
                       className="h-8 w-8 rounded-full object-cover"
-                      src={user?.avatar || 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150'}
+                      src={user?.avatar || 'https://i.postimg.cc/mgdgrRs1/Image-fx-2.png'}
                       alt={user?.name}
                     />
                   </div>
