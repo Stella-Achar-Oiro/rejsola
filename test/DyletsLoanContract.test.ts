@@ -191,7 +191,7 @@ describe("DyletsLoanContract", function () {
           COOLER_SERIAL,
           COOLER_TYPE
         )
-      ).to.be.revertedWith("Pausable: paused");
+      ).to.be.revertedWithCustomError(dyletsLoan, "EnforcedPause");
 
       await dyletsLoan.unpause();
       expect(await dyletsLoan.paused()).to.be.false;
