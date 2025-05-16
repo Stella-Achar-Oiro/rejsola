@@ -1,11 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { User } from '../types/user';
-import { mockUser } from '../data/mockData';
 
 interface UserContextType {
   user: User | null;
   isAuthenticated: boolean;
-  login: (walletAddress: string) => void;
+  login: (walletAddress: string) => Promise<void>;
   logout: () => void;
   setUserLanguage: (language: string) => void;
 }
@@ -38,23 +37,38 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   }, []);
 
-  const login = (walletAddress: string) => {
-    // In a real app, we would authenticate with the blockchain
-    // For now, use mock data
-    const userWithAddress = {
-      ...mockUser,
-      walletAddress
-    };
-    
-    setUser(userWithAddress);
-    setIsAuthenticated(true);
-    localStorage.setItem('user', JSON.stringify(userWithAddress));
+  const login = async (walletAddress: string) => {
+    try {
+      // Create a basic user object with the wallet address
+      const newUser: User = {
+        id: `user-${Date.now()}`,
+        name: `User ${walletAddress.substring(0, 6)}`,
+        walletAddress: walletAddress,
+        email: '',
+        phone: '',
+        location: '',
+        businessType: 'Fish Trader',
+        language: 'en',
+        createdAt: new Date().toISOString(),
+        kycVerified: false,
+        creditScore: 0
+      };
+      
+      setUser(newUser);
+      setIsAuthenticated(true);
+      localStorage.setItem('user', JSON.stringify(newUser));
+    } catch (error) {
+      console.error('Error logging in:', error);
+      throw error;
+    }
   };
 
   const logout = () => {
     setUser(null);
     setIsAuthenticated(false);
     localStorage.removeItem('user');
+    localStorage.removeItem('walletConnected');
+    localStorage.removeItem('walletAddress');
   };
 
   const setUserLanguage = (language: string) => {
