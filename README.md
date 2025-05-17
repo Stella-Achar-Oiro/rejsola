@@ -33,7 +33,7 @@ The main contract `DyletsLoanContract.sol` handles:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/dylets.git
+git clone https://github.com/Stella-Achar-Oiro/rejsola.git
 cd dylets
 ```
 
